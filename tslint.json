@@ -1,0 +1,220 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "rulesDirectory": [],
+    "jsRules": {},
+    "rules": {
+        "arrow-return-shorthand": true,
+        "arrow-parens": false,
+        "ban": [
+            true,
+            {
+                "name": "fit",
+                "message": "focused test should be removed after they are no longer needed"
+            },
+            {
+                "name": "fdescribe",
+                "message": "focused test should be removed after they are no longer needed"
+            },
+            {
+                "name": ["it", "only"],
+                "message": "focused test should be removed after they are no longer needed"
+            },
+            {
+                "name": ["describe", "only"],
+                "message": "focused test should be removed after they are no longer needed"
+            }
+        ],
+        "curly": [
+            true,
+            "ignore-same-line"
+        ],
+        "deprecation": {
+            "severity": "warn"
+        },
+        "eofline": true,
+        "import-blacklist": [
+            true,
+            "rxjs/Rx"
+        ],
+        "import-spacing": true,
+        "indent": [
+            true,
+            "spaces",
+            4
+        ],
+        "interface-over-type-literal": true,
+        "label-position": true,
+        "max-line-length": [
+            true,
+            140
+        ],
+        "member-access": false,
+        "member-ordering": [
+            true,
+            {
+                "order": [
+                    "static-field",
+                    "instance-field",
+                    "static-method",
+                    "instance-method"
+                ]
+            }
+        ],
+        "no-bitwise": false,
+        "no-console": [
+            false,
+            "debug",
+            "info",
+            "time",
+            "timeEnd",
+            "trace"
+        ],
+        "no-empty": false,
+        "no-inferrable-types": [
+            true,
+            "ignore-params"
+        ],
+        "no-non-null-assertion": true,
+        "no-redundant-jsdoc": true,
+        "no-string-literal": false,
+        "no-switch-case-fall-through": true,
+        "no-consecutive-blank-lines": true,
+        "object-literal-sort-keys": false,
+        "one-line": [
+            true,
+            "check-open-brace",
+            "check-catch",
+            "check-else",
+            "check-whitespace"
+        ],
+        "ordered-imports": [
+            true,
+            {
+                "import-sources-order": "case-insensitive",
+                "named-imports-order": "case-insensitive",
+                "grouped-imports": true,
+                "groups": [{
+                        "name": "open source components from other providers",
+                        "match": "^[a-zA-Z]",
+                        "order": 1
+                    },
+                    {
+                        "name": "shared data",
+                        "match": "^@shared",
+                        "order": 2
+                    },
+                    {
+                        "name": "",
+                        "match": "^@controllers",
+                        "order": 3
+                    },
+                    {
+                        "name": "",
+                        "match": "^@decorators",
+                        "order": 4
+                    },
+                    {
+                        "name": "",
+                        "match": "^@entity",
+                        "order": 5
+                    },
+                    {
+                        "name": "",
+                        "match": "^@middleware",
+                        "order": 6
+                    },
+                    {
+                        "name": "",
+                        "match": "^@providers",
+                        "order": 7
+                    },
+                    {
+                        "name": "",
+                        "match": "^@services",
+                        "order": 8
+                    },
+                    {
+                        "name": "Common modules",
+                        "match": "^@common",
+                        "order": 9
+                    },
+                    {
+                        "name": "App Specific Decorators",
+                        "match": "^@AppDecorators",
+                        "order": 10
+                    },
+                    {
+                        "name": "App Specific Entities",
+                        "match": "^@AppEntity",
+                        "order": 11
+                    },
+                    {
+                        "name": "App Specific Providers",
+                        "match": "^@AppProviders",
+                        "order": 12
+                    },
+                    {
+                        "name": "App Specific Services",
+                        "match": "^@AppServices",
+                        "order": 13
+                    },
+                    {
+                        "name": "Other App Specific Imports",
+                        "match": "^@App",
+                        "order": 14
+                    },
+                    {
+                        "name": "testing stubs",
+                        "match": "^@testing",
+                        "order": 15
+                    }
+                ]
+            }
+        ],
+        "prefer-const": [
+            true,
+            {
+                "destructuring": "all"
+            }
+        ],
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "radix": true,
+        "semicolon": [
+            true,
+            "always"
+        ],
+        "typedef-whitespace": [
+            true,
+            {
+                "call-signature": "nospace",
+                "index-signature": "nospace",
+                "parameter": "nospace",
+                "property-declaration": "nospace",
+                "variable-declaration": "nospace"
+            }
+        ],
+        "whitespace": [
+            true,
+            "check-branch",
+            "check-decl",
+            "check-operator",
+            "check-separator",
+            "check-type"
+        ],
+        "no-input-rename": false,
+        "trailing-comma": [
+            true,
+            {
+                "multiline": "never",
+                "singleline": "never"
+            }
+        ],
+        "no-angle-bracket-type-assertion": false
+    }
+}
