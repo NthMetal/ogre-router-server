@@ -1,3 +1,5 @@
-# node-typescript-nodemon-boilerplate
+# Ogre Router Server
 
-A simple boiler plate for converting ts files to js files and then a nodemon watching the js file.
+The server componenet for Ogre Router
+
+Acts as the signaling server for webrtc connections and as the directory authority for the ogre network.
