@@ -8,6 +8,9 @@ import { PeerList } from './models/PeerList';
 const wss = new WebSocketServer({
     port: 8080
 });
+wss.on('listening', () => {
+    console.log('Signaling server started...');
+});
 
 const peerList = new PeerList();
 

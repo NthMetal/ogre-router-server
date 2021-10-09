@@ -3,22 +3,28 @@ import { AController } from './a-controller';
 
 export class ConnectionController extends AController {
     map = {
-        userConnection: (peer: Peer, data: { id: string, alias: string, signature: string }) => {
+        userSignature: (peer: Peer, data: { id: string, alias: string, signature: string, updates?: { alias: string } }) => {
             // verify signature if it exists
             // create it otherwise
-            const updatedSignature = data.signature;
             peer.id = data.id;
-            console.log('adding peer: ', peer.id);
+            peer.alias = data.alias;
+            if (data?.updates?.alias) peer.alias = data.updates.alias;
+            const newSignature = `Sig[${data.id}][${peer.alias}]Sig`;
             const payload = JSON.stringify({
-                event: 'userAcknowledged',
+                event: 'userSignature',
                 data: {
                     id: peer.id,
-                    signature: updatedSignature
+                    signature: newSignature
                 }
             });
             peer.ws.send(payload);
+            // console.log('p')
+            this.peerList.broadcastPeerlist();
+        },
+        userConnection: (peer: Peer, data: { id: string, alias: string, signature: string }) => {
+            // verify signature if it exists
+            peer.id = data.id;
             peer.alias = data.alias;
-            peer.signature = peer.signature;
             this.peerList.addPeer(peer);
         }
     };

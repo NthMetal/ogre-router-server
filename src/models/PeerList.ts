@@ -12,7 +12,7 @@ export class PeerList {
     }
 
     removePeer(peer: Peer) {
-        this.list.splice(this.list.indexOf(peer), 1);
+        this.list.splice(this.list.findIndex(listedPeer => listedPeer.id === peer.id), 1);
         /** Update all connected peers that a peer has left */
         this.broadcastPeerlist();
     }
