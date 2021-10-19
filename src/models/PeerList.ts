@@ -1,35 +1,45 @@
 import { Peer } from './Peer';
 
 export class PeerList {
-    list: Peer[] = [];
+    peerMap: { [id: string]: Peer } = {};
 
     constructor() {}
 
     addPeer(peer: Peer) {
-        this.list.push(peer);
+        this.peerMap[peer.id] = peer;
         /** Update all connected peers that a new peer has joined */
         this.broadcastPeerlist();
     }
 
     removePeer(peer: Peer) {
-        this.list.splice(this.list.findIndex(listedPeer => listedPeer.id === peer.id), 1);
+        this.peerMap[peer.id] = undefined;
         /** Update all connected peers that a peer has left */
         this.broadcastPeerlist();
     }
 
+    getPeerById(id: string): Peer | undefined {
+        return this.peerMap[id];
+    }
+
     broadcastPeerlist() {
+        const list = Object.values(this.peerMap).reduce((acc, peer) => {
+            if (peer) {
+                acc.push({
+                    id: peer.id,
+                    alias: peer.alias
+                });
+            }
+            return acc;
+        }, []);
         this.broadcast({
             event: 'peerlist',
-            data: this.list.map(peer => ({
-                id: peer.id,
-                alias: peer.alias
-            }))
+            data: list
         });
     }
 
     broadcast(message) {
-        this.list.forEach(peer => {
-            peer.ws.send(JSON.stringify(message));
-        })
+        Object.values(this.peerMap).forEach(peer => {
+            if (peer) peer.ws.send(JSON.stringify(message));
+        });
     }
 }

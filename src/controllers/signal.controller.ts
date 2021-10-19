@@ -4,7 +4,7 @@ import { AController } from './a-controller';
 export class SignalController extends AController {
     map = {
         sendOffer: (peer: Peer, data: { target: string, offer: any }) => {
-            const foundTarget = this.peerList.list.find(tpeer => tpeer.id === data.target);
+            const foundTarget = this.peerList.getPeerById(data.target);
             if (foundTarget) {
                 const payload = JSON.stringify({
                     event: 'getOffer',
@@ -17,7 +17,7 @@ export class SignalController extends AController {
             }
         },
         sendAnswer: (peer, data: { target: string, answer: any }) => {
-            const foundTarget = this.peerList.list.find(tpeer => tpeer.id === data.target);
+            const foundTarget = this.peerList.getPeerById(data.target);
             if (foundTarget) {
                 const payload = JSON.stringify({
                     event: 'getAnswer',
